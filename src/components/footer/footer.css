@@ -1,0 +1,265 @@
+body {
+  overflow-x: hidden;
+}
+
+footer {
+  width: 100%;
+  padding: 30px;
+  background-color: #0b162d;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-header {
+  color: #4d7efe;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.footer-header-left h1 {
+  color: #4d7efe;
+  font-size: 17px;
+  margin: 0;
+}
+
+.footer-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.login-icon {
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  margin-right: 15px;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h2 {
+  color: #4d7efe;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.footer-column p {
+  font-size: 12px;
+}
+
+.footer-column .vk-container {
+  display: flex;
+  align-items: center;
+}
+
+.footer-column .vk {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  width: 100%;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #0a1b33;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  color: #4d7efe;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  color: #4d7efe;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+label {
+  color: #4d7efe;
+  font-size: 12px;
+  font-weight: bolder;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  margin-top: 5px;
+  border: 1px solid #4d7efe;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #08152b;
+}
+
+button[type="submit"] {
+  background-color: #08152b;
+  border: 1px solid #4d7efe;
+  color: #4d7efe;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-column {
+    width: 30%;
+    margin-bottom: 0;
+  }
+
+  .login-button {
+    font-size: 16px;
+  }
+
+  .modal-content {
+    padding: 40px;
+    width: 400px;
+  }
+}
+.auditorium {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auditorium-content {
+  background-color: #0a1b33;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.auditorium-content h2 {
+  color: #4d7efe;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.auditorium-content button {
+  background-color: #08152b;
+  border: 1px solid #4d7efe;
+  color: #4d7efe;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.auditorium-content button:hover {
+  transform: scale(1.05);
+}

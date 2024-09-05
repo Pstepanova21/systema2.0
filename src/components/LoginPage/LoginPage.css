@@ -1,0 +1,60 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0b162d;
+  color: #fff;
+}
+
+.login-modal {
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-modal h2 {
+  color: #4d7efe;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-modal label {
+  color: #4d7efe;
+  font-size: 18px;
+  font-weight: bolder;
+  display: block;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.login-modal input {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  border: 1px solid #4d7efe;
+  border-radius: 5px;
+  background-color: #08152b;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.login-modal button[type="submit"] {
+  background-color: #08152b;
+  border: 1px solid #4d7efe;
+  color: #4d7efe;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.login-modal button[type="submit"]:hover {
+  transform: scale(1.05);
+}

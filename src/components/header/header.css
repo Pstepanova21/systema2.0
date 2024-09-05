@@ -1,0 +1,50 @@
+header {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  display: flex;
+  background: url("../../assets/images/image 15.png") no-repeat center center,
+    url("../../assets/images/Rectangle\ 7.png") no-repeat top right;
+  background-size: cover, contain;
+  background-position: center center, top right;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-top: -20px;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin: 0;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 27.86px;
+  text-align: center;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+header nav img.logo {
+  height: 30px;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "Vollda";
+  src: url("./assets/fonts/Vollda-Bold.otf");
+}
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #08152b;
+  color: white;
+  font-family: "Vollda";
+}
