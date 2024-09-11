@@ -112,3 +112,15 @@
   font-size: 24px;
   margin-bottom: 20px;
 }
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #4d7efe;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}

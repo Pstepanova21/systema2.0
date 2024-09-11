@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./puzzle.css";
 
 import image1 from "../../assets/images/puzzle1.jpg";
@@ -42,7 +43,7 @@ function Puzzle() {
           setAnswer("");
           setMessage("");
         }
-      }, 1000);
+      }, 2000);
     } else {
       setMessage("Попробуйте еще раз.");
     }
@@ -61,6 +62,9 @@ function Puzzle() {
               </p>
             ))}
           </div>
+          <Link to="/about" className="back-link">
+            Перейти на главную страницу
+          </Link>
         </div>
       ) : (
         <>
