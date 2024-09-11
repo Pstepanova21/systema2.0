@@ -64,19 +64,27 @@ footer {
 .footer-content {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
 .footer-column {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-right: 20px;
+}
+
+.footer-column:last-child {
+  margin-right: 0;
+}
+
+.footer-column:last-child {
+  margin-left: auto;
 }
 
 .footer-column h2 {
   color: #4d7efe;
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 0;
 }
 
