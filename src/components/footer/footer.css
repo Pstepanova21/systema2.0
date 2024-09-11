@@ -218,7 +218,6 @@ button[type="submit"]:hover {
     font-size: 16px;
   }
 
-
   .modal-content {
     padding: 40px;
     width: 400px;
@@ -277,4 +276,8 @@ button[type="submit"]:hover {
   color: red;
   margin-top: 10px;
   font-size: 14px;
+}
+.password-field {
+  font-family: "Courier New", Courier, monospace; /* Используйте шрифт, чтобы текст был похож на скрытый */
+  letter-spacing: 2px; /* Создайте видимость скрытого текста */
 }

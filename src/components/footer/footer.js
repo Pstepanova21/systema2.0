@@ -7,7 +7,6 @@ import loginIcon from "../../assets/images/enter 1.png";
 function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAuditoriumOpen, setIsAuditoriumOpen] = useState(false);
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
@@ -17,14 +16,13 @@ function Footer() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setUsername("");
     setPassword("");
     setLoginError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === "SY.Koruv228" && password === "Шупетт") {
+    if (password === "Шупетт") {
       setIsModalOpen(false);
       setIsAuditoriumOpen(true);
     } else {
@@ -79,17 +77,19 @@ function Footer() {
                 <input
                   type="text"
                   name="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value="SY.Koruv228"
+                  readOnly
                 />
               </label>
               <label>
                 Пароль:
                 <input
-                  type="password"
+                  type="text"
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="password-field"
+                  autoComplete="off"
                 />
               </label>
               {loginError && <p className="login-error">{loginError}</p>}
