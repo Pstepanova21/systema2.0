@@ -218,6 +218,7 @@ button[type="submit"]:hover {
     font-size: 16px;
   }
 
+
   .modal-content {
     padding: 40px;
     width: 400px;
@@ -270,4 +271,10 @@ button[type="submit"]:hover {
 
 .auditorium-content button:hover {
   transform: scale(1.05);
+}
+
+.login-error {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
 }

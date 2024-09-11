@@ -6,6 +6,9 @@ import User from "../../assets/images/user 1.png";
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAuditoriumOpen, setIsAuditoriumOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const handleUserIconClick = () => {
     setIsModalOpen(true);
@@ -13,12 +16,19 @@ function Header() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setUsername(""); // Сброс логина
+    setPassword(""); // Сброс пароля
+    setLoginError(""); // Очистить ошибку
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsModalOpen(false);
-    setIsAuditoriumOpen(true);
+    if (username === "SY.Koruv228" && password === "Шупетт") {
+      setIsModalOpen(false);
+      setIsAuditoriumOpen(true);
+    } else {
+      setLoginError("Неверный логин или пароль");
+    }
   };
 
   const handleCloseAuditorium = () => {
@@ -59,12 +69,23 @@ function Header() {
             <form onSubmit={handleSubmit}>
               <label>
                 Логин:
-                <input type="text" name="username" />
+                <input
+                  type="text"
+                  name="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </label>
               <label>
                 Пароль:
-                <input type="password" name="password" />
+                <input
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </label>
+              {loginError && <p className="login-error">{loginError}</p>}
               <button type="submit">Войти</button>
             </form>
           </div>
