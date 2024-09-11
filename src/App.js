@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,23 +10,26 @@ import About from "./components/about/about";
 import Rules from "./components/rules/rules";
 import Map from "./components/map/map";
 import LoginPage from "./components/LoginPage/LoginPage";
+import Puzzle from "./components/puzzle/puzzle";
 
 import "./App.css";
 
 function AppContent() {
   const location = useLocation();
   const isAuthPage = location.pathname === "/";
+  const isPuzzlePage = location.pathname === "/puzzle";
 
   return (
     <div className="App">
-      {!isAuthPage && <Header />}
+      {!isAuthPage && !isPuzzlePage && <Header />}
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/rules" element={<Rules />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/puzzle" element={<Puzzle />} />
       </Routes>
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isPuzzlePage && <Footer />}
     </div>
   );
 }

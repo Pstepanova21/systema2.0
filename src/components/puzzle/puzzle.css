@@ -5,8 +5,9 @@
   justify-content: center;
   height: 100vh;
   padding: 20px;
-  background-color: #0a1b33;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000;
+  position: relative;
 }
 
 .puzzle-container h1 {
@@ -14,9 +15,9 @@
   font-size: 24px;
   margin-bottom: 20px;
 }
-
-.puzzle-container p {
-  font-size: 18px;
+.puzzle-container img {
+  max-width: 100%;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -26,23 +27,31 @@
   align-items: center;
   width: 100%;
   max-width: 300px;
+  position: relative;
 }
 
 .puzzle-container input {
   padding: 10px;
   border: 1px solid #4d7efe;
   border-radius: 5px;
-  background-color: #08152b;
-  color: white;
+  background-color: #ffffff;
+  color: black;
   font-size: 16px;
   margin-bottom: 10px;
   width: 100%;
+  outline: none;
+  box-shadow: none;
+}
+
+.puzzle-container input:focus {
+  border-color: #4d7efe;
+  box-shadow: none;
 }
 
 .puzzle-container button {
-  background-color: #08152b;
-  border: 1px solid #4d7efe;
-  color: #4d7efe;
+  background-color: #4d7efe;
+  border: none;
+  color: white;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -51,11 +60,55 @@
 }
 
 .puzzle-container button:hover {
-  background-color: #0a1b33;
+  background-color: #6b94ff;
 }
 
 .puzzle-message {
-  margin-top: 20px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 16px;
   color: #4d7efe;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.hints-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.hints-title {
+  font-size: 20px;
+  margin-top: 30px;
+  color: #4d7efe;
+  margin-bottom: 10px;
+}
+
+.puzzle-hint {
+  color: #4d7efe;
+  margin: 10px;
+}
+
+.puzzle-audio {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.completion-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.completion-message h1 {
+  color: #4d7efe;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
