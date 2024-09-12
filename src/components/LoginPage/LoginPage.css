@@ -39,6 +39,10 @@
   margin-top: 5px;
   box-sizing: border-box;
 }
+.login-modal input:focus {
+  border-color: #4d7efe;
+  box-shadow: none;
+}
 
 .login-modal button[type="submit"] {
   background-color: #08152b;

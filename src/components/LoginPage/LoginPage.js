@@ -1,16 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./LoginPage.css";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Здесь проверка логина и пароля
-    navigate("/about");
+    try {
+      const response = await axios.post(
+        "https://systema-api.itc-hub.ru/api/loginteam",
+        new URLSearchParams({
+          username: username,
+          password: password,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      if (response.data.success) {
+        navigate("/about");
+      } else {
+        setLoginError("Неверный логин или пароль");
+      }
+    } catch (error) {
+      setLoginError("Ошибка сети");
+    }
   };
 
   return (
@@ -24,6 +46,7 @@ function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </label>
           <label>
@@ -32,8 +55,10 @@ function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </label>
+          {loginError && <p className="login-error">{loginError}</p>}
           <button type="submit">Войти</button>
         </form>
       </div>

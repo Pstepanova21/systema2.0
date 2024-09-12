@@ -1,0 +1,142 @@
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #0a1b33;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  color: #4d7efe;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  color: #4d7efe;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+label {
+  color: #4d7efe;
+  font-size: 12px;
+  font-weight: bolder;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  margin-top: 5px;
+  border: 1px solid #4d7efe;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #08152b;
+}
+
+button[type="submit"] {
+  background-color: #08152b;
+  border: 1px solid #4d7efe;
+  color: #4d7efe;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.05);
+}
+.auditorium {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auditorium-content {
+  background-color: #0a1b33;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.auditorium-content h2 {
+  color: #4d7efe;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.auditorium-content button {
+  background-color: #08152b;
+  border: 1px solid #4d7efe;
+  color: #4d7efe;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.auditorium-content button:hover {
+  transform: scale(1.05);
+}
+
+.login-error {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.password-field {
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
+}
