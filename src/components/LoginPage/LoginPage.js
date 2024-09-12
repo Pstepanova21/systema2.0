@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -12,23 +11,29 @@ function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await fetch(
         "https://systema-api.itc-hub.ru/api/loginteam",
-        new URLSearchParams({
-          username: username,
-          password: password,
-        }),
         {
+          method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
           },
+          body: new URLSearchParams({
+            username: username,
+            password: password,
+          }),
         }
       );
 
-      if (response.data.success) {
-        navigate("/about");
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          navigate("/about");
+        } else {
+          setLoginError("Неверный логин или пароль");
+        }
       } else {
-        setLoginError("Неверный логин или пароль");
+        setLoginError("Ошибка авторизации");
       }
     } catch (error) {
       setLoginError("Ошибка сети");
@@ -46,7 +51,6 @@ function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
             />
           </label>
           <label>
@@ -55,7 +59,6 @@ function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
           </label>
           {loginError && <p className="login-error">{loginError}</p>}
