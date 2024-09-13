@@ -56,7 +56,7 @@ function Header({
           />
           <ul>
             <li>
-              <Link to="/">О НАС</Link>
+              <Link to="/about">О НАС</Link>
             </li>
             <li>
               <Link to="/rules">ПРАВИЛА</Link>
