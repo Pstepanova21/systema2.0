@@ -19,7 +19,6 @@ const puzzles = [
     image: audio5,
     answer: "амели",
     hint: "бирманская",
-    isAudio: true,
     task_id: 5,
   },
 ];
@@ -32,7 +31,6 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
-  const navigate = useNavigate();
   const [showCompletion, setShowCompletion] = useState(false);
   const [hints, setHints] = useState([]);
 
@@ -65,14 +63,16 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
       setLoginError("Ошибка сети");
     }
   };
+
   const handleSubmitTask = async (e) => {
     e.preventDefault();
+    if (showCompletion) return;
     try {
       const response = await axios.post(
         "https://systema-api.itc-hub.ru/api/task",
         {
           team_id: teamId,
-          task_id: puzzles[currentPuzzle].task_id,
+          task_id: puzzles[currentPuzzle]?.task_id,
           answer: answer.toLowerCase(),
         },
         {
@@ -85,16 +85,26 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
       if (response.status === 200) {
         setMessage("Правильно!");
         const hint = response.data.hint;
+        setHints((prevHints) => {
+          const newHints = [...prevHints, hint];
+          if (currentPuzzle === puzzles.length - 1) {
+            // If it's the last puzzle
+            setShowCompletion(true);
+            return newHints;
+          }
+          return newHints;
+        });
+
         setTimeout(() => {
           if (currentPuzzle === puzzles.length - 1) {
-            setHints((prevHints) => [...prevHints, hint]);
             setShowCompletion(true);
           } else {
-            setHints((prevHints) => {
-              if (!showHintsTitle) setShowHintsTitle(true);
-              return [...prevHints, hint];
+            setCurrentPuzzle((prev) => {
+              if (prev < puzzles.length - 1) {
+                return prev + 1;
+              }
+              return prev;
             });
-            setCurrentPuzzle(currentPuzzle + 1);
             setAnswer("");
             setMessage("");
           }
@@ -108,9 +118,14 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
           setTimeout(() => {
             setHints((prevHints) => {
               if (!showHintsTitle) setShowHintsTitle(true);
-              return [...prevHints, puzzles[currentPuzzle].hint];
+              return [...prevHints, puzzles[currentPuzzle]?.hint];
             });
-            setCurrentPuzzle(currentPuzzle + 1);
+            setCurrentPuzzle((prev) => {
+              if (prev < puzzles.length - 1) {
+                return prev + 1;
+              }
+              return prev;
+            });
             setAnswer("");
             setMessage("");
           }, 2000);
@@ -122,6 +137,8 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
       }
     }
   };
+
+  const puzzle = puzzles[currentPuzzle] || {};
 
   return token && teamId ? (
     <div className="puzzle-container">
@@ -143,14 +160,14 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
       ) : (
         <>
           <h1>Загадка {currentPuzzle + 1}</h1>
-          {puzzles[currentPuzzle].isAudio ? (
+          {puzzle.image?.endsWith(".wav") ? (
             <audio controls className="puzzle-audio">
-              <source src={puzzles[currentPuzzle].image} type="audio/wav" />
+              <source src={puzzle.image} type="audio/wav" />
               Ваш браузер не поддерживает аудиоформат.
             </audio>
           ) : (
             <img
-              src={puzzles[currentPuzzle].image}
+              src={puzzle.image}
               alt={`Загадка ${currentPuzzle + 1}`}
               className="puzzle-image"
             />
