@@ -28,16 +28,14 @@ function LoginModal({ onClose, teamId, token }) {
         const data = await response.json();
         if (data.status === "win") {
           setIsAuditoriumOpen(true);
-          setMessage("Ждем вас в сквере!");
+          setMessage("Ждем вас в сквере у РЭУ!");
         }
       } else if (response.status === 400) {
         const data = await response.json();
 
         if (data.status === "lose") {
           setIsAuditoriumOpen(true);
-          setMessage(
-            "Система заметила подозрительную активность, следуйте за адептом!"
-          );
+          setMessage("Пройдите к Павелецкой плазе.");
         }
         if (data.error === "incorrect data") {
           setLoginError("Неверные данные. Попробуйте снова.");
