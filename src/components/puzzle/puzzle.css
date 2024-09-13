@@ -31,6 +31,7 @@
 
 .puzzle-container input {
   padding: 10px;
+  margin-top: 30px;
   border: 1px solid #4d7efe;
   border-radius: 5px;
   background-color: #ffffff;

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import audioFile from "../../assets/audio/result (9).wav";
 import "./puzzle.css";
 
 const hints = {
@@ -94,10 +93,13 @@ function Puzzle5({ teamId, token, setToken, setTeamId }) {
   return token && teamId ? (
     <div className="puzzle-container">
       <h1>Загадка 5</h1>
-      <audio controls>
-        <source src={audioFile} type="audio/wav" />
-        Ваш браузер не поддерживает аудиофайлы.
-      </audio>
+      <a
+        href="https://docs.google.com/spreadsheets/d/1QF-jZX5eAa6vMMZQKnZ1SFmZFd7zIKaOlMRDuAqXx4I/edit?gid=0#gid=0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Перейти к загадке
+      </a>
       <form onSubmit={handleSubmitTask}>
         <input
           type="text"
