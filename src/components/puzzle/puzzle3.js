@@ -3,6 +3,14 @@ import axios from "axios";
 import image3 from "../../assets/images/puzzle3.jpg";
 import "./puzzle.css";
 
+const hints = {
+  1: "звук",
+  2: "5",
+  3: "мероприятие",
+  4: "лицо",
+  5: "бирманская",
+};
+
 function Puzzle3({ teamId, token, setToken, setTeamId }) {
   const [answer, setAnswer] = useState("");
   const [message, setMessage] = useState("");
@@ -44,12 +52,13 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
+    const taskId = 3; // Замените на переменную для динамического задания
     try {
       const response = await axios.post(
         "https://systema-api.itc-hub.ru/api/task",
         {
           team_id: teamId,
-          task_id: 3,
+          task_id: taskId,
           answer: answer.toLowerCase(),
         },
         {
@@ -61,7 +70,7 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
 
       if (response.status === 200) {
         setMessage("Правильно!");
-        setHint("Подсказка для задачи 3");
+        setHint(hints[taskId] || "Нет подсказки");
         setShowHintTitle(true);
         setAnswer("");
       }
@@ -69,6 +78,8 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
       if (error.response?.status === 400) {
         const errorMessage = error.response.data.error;
         if (errorMessage === "task already completed") {
+          setHint(hints[taskId] || "Нет подсказки");
+          setShowHintTitle(true);
           setMessage("Это задание уже выполнено.");
           setAnswer("");
         } else if (errorMessage === "incorrect answer") {

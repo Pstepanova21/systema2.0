@@ -89,7 +89,6 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
         setHints((prevHints) => {
           const newHints = [...prevHints, hint];
           if (currentPuzzle === puzzles.length - 1) {
-            // If it's the last puzzle
             setShowCompletion(true);
             return newHints;
           }
