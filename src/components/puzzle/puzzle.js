@@ -66,7 +66,8 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
-    if (showCompletion) return;
+    if (showCompletion) return; // Prevent any action if completion is shown
+
     try {
       const response = await axios.post(
         "https://systema-api.itc-hub.ru/api/task",

@@ -6,8 +6,8 @@ import "./puzzle.css";
 function Puzzle3({ teamId, token, setToken, setTeamId }) {
   const [answer, setAnswer] = useState("");
   const [message, setMessage] = useState("");
-  const [hints, setHints] = useState([]);
-  const [showHintsTitle, setShowHintsTitle] = useState(false);
+  const [hint, setHint] = useState("");
+  const [showHintTitle, setShowHintTitle] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -61,14 +61,8 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
 
       if (response.status === 200) {
         setMessage("Правильно!");
-        const hint = response.data.hint;
-        setHints((prevHints) => {
-          const newHints = [...prevHints, hint];
-          if (newHints.length === 1) {
-            setShowHintsTitle(true);
-          }
-          return newHints;
-        });
+        setHint("Подсказка для задачи 3");
+        setShowHintTitle(true);
         setAnswer("");
       }
     } catch (error) {
@@ -100,13 +94,9 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
         <button type="submit">Проверить</button>
         {message && <p className="puzzle-message">{message}</p>}
       </form>
-      <div className="hints-container">
-        {showHintsTitle && <h2 className="hints-title">Подсказки</h2>}
-        {hints.map((hint, index) => (
-          <p key={index} className="puzzle-hint">
-            {hint}
-          </p>
-        ))}
+      <div className="hint-container">
+        {showHintTitle && <h2 className="hint-title">Подсказка</h2>}
+        {hint && <p className="puzzle-hint">{hint}</p>}
       </div>
     </div>
   ) : (

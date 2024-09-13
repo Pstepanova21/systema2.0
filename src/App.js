@@ -22,12 +22,13 @@ function AppContent() {
   const location = useLocation();
   const isAuthPage = location.pathname === "/";
   const isPuzzlePage = [
-    "/puzzle1",
-    "/puzzle2",
-    "/puzzle3",
-    "/puzzle4",
-    "/puzzle5",
+    "/hdsfjdsfj",
+    "/dsfhjsdfh",
+    "/jfhsdhfsdgj",
+    "/jdsflksjfklsjf",
+    "/dlskjflksdjfk",
   ].includes(location.pathname);
+
   const [token, setToken] = useState("");
   const [mapImage, setMapImage] = useState(null);
   const [teamId, setTeamId] = useState(null);
@@ -35,7 +36,7 @@ function AppContent() {
 
   return (
     <div className="App">
-      {!isAuthPage && !isPuzzlePage && (
+      {!isPuzzlePage && !isAuthPage && (
         <Header
           setToken={setToken}
           token={token}
@@ -150,7 +151,7 @@ function AppContent() {
           }
         />
       </Routes>
-      {!isAuthPage && !isPuzzlePage && (
+      {!isPuzzlePage && !isAuthPage && (
         <Footer
           setToken={setToken}
           token={token}
