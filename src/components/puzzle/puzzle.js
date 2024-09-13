@@ -14,7 +14,7 @@ const puzzles = [
   { image: image1, answer: "дэвид тьюлис", hint: "звук", task_id: 1 },
   { image: image2, answer: "4,17е+12", hint: "5", task_id: 2 },
   { image: image3, answer: "люси лью", hint: "мероприятие", task_id: 3 },
-  { image: image4, answer: "адамант", hint: "лицо", task_id: 4 },
+  { image: image4, answer: "адамантий", hint: "лицо", task_id: 4 },
   {
     image: audio5,
     answer: "амели",

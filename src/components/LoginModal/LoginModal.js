@@ -5,6 +5,7 @@ function LoginModal({ onClose, teamId, token }) {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [isAuditoriumOpen, setIsAuditoriumOpen] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,11 +26,19 @@ function LoginModal({ onClose, teamId, token }) {
 
       if (response.ok) {
         const data = await response.json();
-        if (data.status === "ураааа, вы победили") {
+        if (data.status === "win") {
           setIsAuditoriumOpen(true);
+          setMessage("Ждем вас в сквере!");
         }
       } else if (response.status === 400) {
         const data = await response.json();
+
+        if (data.status === "lose") {
+          setIsAuditoriumOpen(true);
+          setMessage(
+            "Система заметила подозрительную активность, следуйте за адептом!"
+          );
+        }
         if (data.error === "incorrect data") {
           setLoginError("Неверные данные. Попробуйте снова.");
         } else if (data.error === "оу ноу, вы проиграли") {
@@ -85,9 +94,8 @@ function LoginModal({ onClose, teamId, token }) {
             </form>
           </>
         ) : (
-          <div className="auditorium-content">
-            <h2>УРА! ВЫ ПОБЕДИЛИ!</h2>
-            <h3>ПРОЙДИТЕ В АУДИТОРИЮ</h3>
+          <div className="result-content">
+            <h2>{message}</h2>
             <button onClick={onClose}>Закрыть</button>
           </div>
         )}
