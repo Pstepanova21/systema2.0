@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LoginModal.css";
 
-function LoginModal({ onClose }) {
+function LoginModal({ onClose, teamId, token }) {
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [isAuditoriumOpen, setIsAuditoriumOpen] = useState(false);
@@ -14,7 +14,7 @@ function LoginModal({ onClose }) {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: token,
           },
           body: new URLSearchParams({
             username: "SY.Koruv228",
@@ -25,16 +25,28 @@ function LoginModal({ onClose }) {
 
       if (response.ok) {
         const data = await response.json();
-        if (data.success) {
+        if (data.status === "ураааа, вы победили") {
           setIsAuditoriumOpen(true);
-        } else {
-          setLoginError("Неверный логин или пароль");
+        }
+      } else if (response.status === 400) {
+        const data = await response.json();
+        if (data.error === "incorrect data") {
+          setLoginError("Неверные данные. Попробуйте снова.");
+        } else if (data.error === "оу ноу, вы проиграли") {
+          setLoginError("оу ноу, вы проиграли :(");
+        }
+      } else if (response.status === 406) {
+        const data = await response.json();
+        if (data.error === "required access level 2") {
+          setLoginError(
+            "Требуется уровень доступа 2. Попробуйте другой логин."
+          );
         }
       } else {
-        setLoginError("Ошибка авторизации");
+        setLoginError("Ошибка авторизации. Попробуйте снова.");
       }
     } catch (error) {
-      setLoginError("Ошибка сети");
+      setLoginError("Ошибка сети. Проверьте соединение.");
     }
   };
 

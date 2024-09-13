@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
-function LoginPage() {
+function LoginPage({ setToken, setTeamId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
@@ -26,9 +26,12 @@ function LoginPage() {
       );
 
       if (response.ok) {
+        navigate("/about");
         const data = await response.json();
+        setToken(data.access_token);
+        setTeamId(data.team_id);
         if (data.success) {
-          navigate("/about");
+          console.log("success");
         } else {
           setLoginError("Неверный логин или пароль");
         }

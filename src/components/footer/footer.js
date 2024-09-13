@@ -5,9 +5,7 @@ import vk from "../../assets/images/free-icon-logo-12868069 1.png";
 import loginIcon from "../../assets/images/enter 1.png";
 import LoginModal from "../LoginModal/LoginModal";
 
-function Footer() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+function Footer({ token, setTeamId, teamId, setIsModalOpen, isModalOpen }) {
   const handleLoginClick = () => {
     setIsModalOpen(true);
   };
@@ -20,10 +18,15 @@ function Footer() {
     <>
       <footer>
         <div className="footer-header">
-          <div className="footer-header-left">
+          <div
+            className="footer-header-left"
+            onClick={() => (window.location.href = "https://vk.com/kmk_sys")}
+            style={{ cursor: "pointer" }}
+          >
             <img src={footer} alt="Logo" className="footer-logo" />
             <h1>SYSTEMA</h1>
           </div>
+
           <div className="footer-header-right">
             <button className="login-button" onClick={handleLoginClick}>
               ВОЙТИ
@@ -46,7 +49,16 @@ function Footer() {
         </div>
       </footer>
 
-      {isModalOpen && <LoginModal onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <LoginModal
+          onClose={handleCloseModal}
+          setTeamId={setTeamId}
+          teamId={teamId}
+          token={token}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </>
   );
 }

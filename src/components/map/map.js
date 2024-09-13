@@ -1,9 +1,9 @@
 import React from "react";
 import "./map.css";
-import Route1Image from "../../assets/images/route1.png";
-import Route2Image from "../../assets/images/route2.png";
 
-function Map() {
+function Map({ mapImage }) {
+  const baseUrl = "https://systema-api.itc-hub.ru"; // Базовый URL для изображений
+
   return (
     <div className="map-container">
       <h1 className="map-header">
@@ -12,12 +12,21 @@ function Map() {
       <div className="map-content">
         <div className="routes">
           <div className="route">
-            <h2>Маршрут 1</h2>
-            <img src={Route1Image} alt="Маршрут 1" className="route-image" />
-          </div>
-          <div className="route">
-            <h2>Маршрут 2</h2>
-            <img src={Route2Image} alt="Маршрут 2" className="route-image" />
+            {/* Проверяем, есть ли изображение */}
+            {mapImage ? (
+              <img
+                src={`${baseUrl}${mapImage}`} // Собираем полный путь к изображению
+                alt="Карта команды"
+                className="route-image"
+                onError={(e) => {
+                  // Если изображение не загружается, показываем сообщение об ошибке
+                  e.target.src = "";
+                  e.target.alt = "Изображение не найдено";
+                }}
+              />
+            ) : (
+              <p>Изображение карты не доступно</p>
+            )}
           </div>
         </div>
       </div>
