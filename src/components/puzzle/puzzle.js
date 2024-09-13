@@ -65,7 +65,6 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
       setLoginError("Ошибка сети");
     }
   };
-
   const handleSubmitTask = async (e) => {
     e.preventDefault();
     try {
@@ -106,6 +105,15 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
         const errorMessage = error.response.data.error;
         if (errorMessage === "task already completed") {
           setMessage("Это задание уже выполнено.");
+          setTimeout(() => {
+            setHints((prevHints) => {
+              if (!showHintsTitle) setShowHintsTitle(true);
+              return [...prevHints, puzzles[currentPuzzle].hint];
+            });
+            setCurrentPuzzle(currentPuzzle + 1);
+            setAnswer("");
+            setMessage("");
+          }, 2000);
         } else if (errorMessage === "incorrect answer") {
           setMessage("Ответ неверный. Попробуйте снова.");
         }

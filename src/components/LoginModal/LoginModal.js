@@ -86,7 +86,8 @@ function LoginModal({ onClose, teamId, token }) {
           </>
         ) : (
           <div className="auditorium-content">
-            <h2>ПРОЙДИТЕ В АУДИТОРИЮ</h2>
+            <h2>УРА! ВЫ ПОБЕДИЛИ!</h2>
+            <h3>ПРОЙДИТЕ В АУДИТОРИЮ</h3>
             <button onClick={onClose}>Закрыть</button>
           </div>
         )}
