@@ -30,11 +30,11 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
   const [message, setMessage] = useState("");
   const [hints, setHints] = useState([]);
   const [showHintsTitle, setShowHintsTitle] = useState(false);
-  const [showCompletion, setShowCompletion] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
+  const [showCompletion, setShowCompletion] = useState(false);
 
   const handleLogin = async (event) => {
     event.preventDefault();
