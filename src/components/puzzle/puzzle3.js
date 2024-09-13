@@ -52,7 +52,7 @@ function Puzzle3({ teamId, token, setToken, setTeamId }) {
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
-    const taskId = 3; // Замените на переменную для динамического задания
+    const taskId = 3;
     try {
       const response = await axios.post(
         "https://systema-api.itc-hub.ru/api/task",
