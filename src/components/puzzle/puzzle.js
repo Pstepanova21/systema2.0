@@ -66,7 +66,7 @@ function Puzzle({ teamId, token, setToken, setTeamId }) {
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
-    if (showCompletion) return; // Prevent any action if completion is shown
+    if (showCompletion) return;
 
     try {
       const response = await axios.post(

@@ -7,8 +7,6 @@ import {
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import About from "./components/about/about";
-import Rules from "./components/rules/rules";
-import Map from "./components/map/map";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Puzzle1 from "./components/puzzle/puzzle1";
 import Puzzle2 from "./components/puzzle/puzzle2";
@@ -30,18 +28,15 @@ function AppContent() {
   ].includes(location.pathname);
 
   const [token, setToken] = useState("");
-  const [mapImage, setMapImage] = useState(null);
   const [teamId, setTeamId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="App">
-      {!isPuzzlePage && !isAuthPage && (
+      {!isAuthPage && (
         <Header
           setToken={setToken}
           token={token}
-          setMapImage={setMapImage}
-          mapImage={mapImage}
           setTeamId={setTeamId}
           teamId={teamId}
           isModalOpen={isModalOpen}
@@ -66,30 +61,6 @@ function AppContent() {
             <About
               setToken={setToken}
               token={token}
-              setTeamId={setTeamId}
-              teamId={teamId}
-            />
-          }
-        />
-        <Route
-          path="/rules"
-          element={
-            <Rules
-              setToken={setToken}
-              token={token}
-              setTeamId={setTeamId}
-              teamId={teamId}
-            />
-          }
-        />
-        <Route
-          path="/map"
-          element={
-            <Map
-              setToken={setToken}
-              token={token}
-              setMapImage={setMapImage}
-              mapImage={mapImage}
               setTeamId={setTeamId}
               teamId={teamId}
             />

@@ -16,39 +16,6 @@ function Puzzle4({ teamId, token, setToken, setTeamId }) {
   const [message, setMessage] = useState("");
   const [hint, setHint] = useState("");
   const [showHintTitle, setShowHintTitle] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginError, setLoginError] = useState("");
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        "https://systema-api.itc-hub.ru/api/loginteam",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({
-            username: username,
-            password: password,
-          }),
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        setToken(data.access_token);
-        setTeamId(data.team_id);
-      } else {
-        const data = await response.json();
-        setLoginError(data.error || "Ошибка авторизации");
-      }
-    } catch (error) {
-      setLoginError("Ошибка сети");
-    }
-  };
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
@@ -91,7 +58,7 @@ function Puzzle4({ teamId, token, setToken, setTeamId }) {
     }
   };
 
-  return token && teamId ? (
+  return (
     <div className="puzzle-container">
       <h1>Загадка 4</h1>
       <img src={image4} alt="Загадка 4" className="puzzle-image" />
@@ -108,32 +75,6 @@ function Puzzle4({ teamId, token, setToken, setTeamId }) {
       <div className="hint-container">
         {showHintTitle && <h2 className="hint-title">Подсказка</h2>}
         {hint && <p className="puzzle-hint">{hint}</p>}
-      </div>
-    </div>
-  ) : (
-    <div className="login-page">
-      <div className="login-modal">
-        <h2>Авторизация</h2>
-        <form onSubmit={handleLogin}>
-          <label>
-            Логин:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <label>
-            Пароль:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          {loginError && <p className="login-error">{loginError}</p>}
-          <button type="submit">Войти</button>
-        </form>
       </div>
     </div>
   );
