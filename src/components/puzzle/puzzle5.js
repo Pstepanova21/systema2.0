@@ -15,6 +15,8 @@ function Puzzle5({ teamId, token, setToken, setTeamId }) {
   const [message, setMessage] = useState("");
   const [hint, setHint] = useState("");
   const [showHintTitle, setShowHintTitle] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleSubmitTask = async (e) => {
     e.preventDefault();
@@ -38,6 +40,8 @@ function Puzzle5({ teamId, token, setToken, setTeamId }) {
         setMessage("Правильно!");
         setHint(hints[taskId] || "Нет подсказки");
         setShowHintTitle(true);
+        setShowModal(true);
+        setModalMessage("Поздравляем, вы взломали SYSTEMу!");
         setAnswer("");
       }
     } catch (error) {
@@ -46,9 +50,13 @@ function Puzzle5({ teamId, token, setToken, setTeamId }) {
         if (errorMessage === "task already completed") {
           setHint(hints[taskId] || "Нет подсказки");
           setShowHintTitle(true);
+          setShowModal(true);
+          setModalMessage("Поздравляем, вы взломали SYSTEMу!");
           setMessage("Это задание уже выполнено.");
           setAnswer("");
         } else if (errorMessage === "incorrect answer") {
+          setShowModal(true);
+          setModalMessage("Система посчитала вас опасным, вы были стёрты.");
           setMessage("Ответ неверный. Попробуйте снова.");
         }
       } else {
@@ -81,6 +89,15 @@ function Puzzle5({ teamId, token, setToken, setTeamId }) {
         {showHintTitle && <h2 className="hint-title">Подсказка</h2>}
         {hint && <p className="puzzle-hint">{hint}</p>}
       </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <p>{modalMessage}</p>
+            <button onClick={() => setShowModal(false)}>Закрыть</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

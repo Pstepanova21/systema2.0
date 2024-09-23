@@ -39,8 +39,7 @@ function AppContent() {
           token={token}
           setTeamId={setTeamId}
           teamId={teamId}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          isPuzzlePage={isPuzzlePage} // передаем параметр
         />
       )}
       <Routes>
