@@ -97,7 +97,8 @@ header nav ul li a:hover {
 
 header nav img.logo {
   height: 30px;
-  cursor: pointer;
+  pointer-events: none;
+  cursor: default;
 }
 
 .puzzle-header {
