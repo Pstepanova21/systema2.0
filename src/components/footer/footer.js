@@ -20,8 +20,19 @@ function Footer() {
         <div className="footer-column">
           <h2>ПРИСОЕДИНЯЙТЕСЬ</h2>
           <div className="vk-container">
-            <img src={vk} alt="vk" className="vk" />
-            <p>ВКОНТАКТЕ</p>
+            <img
+              src={vk}
+              alt="vk"
+              className="vk"
+              onClick={() => (window.location.href = "https://vk.com/kmk_sys")}
+              style={{ cursor: "pointer" }}
+            />
+            <p
+              onClick={() => (window.location.href = "https://vk.com/kmk_sys")}
+              style={{ cursor: "pointer" }}
+            >
+              ВКОНТАКТЕ
+            </p>
           </div>
         </div>
         <div className="footer-column">
