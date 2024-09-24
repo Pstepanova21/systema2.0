@@ -13,19 +13,19 @@ function Header({ isPuzzlePage }) {
             <Link to="/about">О НАС</Link>
           </li>
           <li>
-            <Link to="/hdsfjdsfj">TASK1</Link>
+            <Link to="/hdsfjdsfj">TASK 1</Link>
           </li>
           <li>
-            <Link to="/dsfhjsdfh">TASK2</Link>
+            <Link to="/dsfhjsdfh">TASK 2</Link>
           </li>
           <li>
-            <Link to="/jfhsdhfsdgj">TASK3</Link>
+            <Link to="/jfhsdhfsdgj">TASK 3</Link>
           </li>
           <li>
-            <Link to="/jdsflksjfklsjf">TASK4</Link>
+            <Link to="/jdsflksjfklsjf">TASK 4</Link>
           </li>
           <li>
-            <Link to="/dlskjflksdjfk">TASK5</Link>
+            <Link to="/dlskjflksdjfk">TASK 5</Link>
           </li>
         </ul>
       </nav>
