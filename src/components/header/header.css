@@ -95,12 +95,6 @@ header nav ul li a:hover {
   text-decoration: underline;
 }
 
-header nav img.logo {
-  height: 30px;
-  pointer-events: none;
-  cursor: default;
-}
-
 .puzzle-header {
   background: none;
   background-color: #4d7efe;

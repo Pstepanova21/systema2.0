@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LoginModal.css";
+import styles from "./LoginModal.module.css";
 
 function LoginModal({ onClose, teamId, token }) {
   const [password, setPassword] = useState("");
@@ -32,7 +32,6 @@ function LoginModal({ onClose, teamId, token }) {
         }
       } else if (response.status === 400) {
         const data = await response.json();
-
         if (data.status === "lose") {
           setIsAuditoriumOpen(true);
           setMessage("Пройдите к Павелецкой плазе.");
@@ -58,9 +57,9 @@ function LoginModal({ onClose, teamId, token }) {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close-button" onClick={onClose}>
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
+        <span className={styles.closeButton} onClick={onClose}>
           &times;
         </span>
         {!isAuditoriumOpen ? (
@@ -83,16 +82,18 @@ function LoginModal({ onClose, teamId, token }) {
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="password-field"
+                  className={styles.passwordField}
                   autoComplete="off"
                 />
               </label>
-              {loginError && <p className="login-error">{loginError}</p>}
-              <button type="submit">Войти</button>
+              {loginError && <p className={styles.loginError}>{loginError}</p>}
+              <button type="submit" className={styles.loginButton}>
+                Войти
+              </button>
             </form>
           </>
         ) : (
-          <div className="result-content">
+          <div className={styles.resultContent}>
             <h2>{message}</h2>
             <button onClick={onClose}>Закрыть</button>
           </div>

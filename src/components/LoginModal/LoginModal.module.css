@@ -12,8 +12,8 @@
   align-items: center;
 }
 
-.modal-content {
-  background-color: #0a1b33;
+.modalContent {
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 15px;
   max-width: 300px;
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.close-button {
+.closeButton {
   position: absolute;
   color: #4d7efe;
   top: 10px;
@@ -31,8 +31,8 @@
   cursor: pointer;
 }
 
-.modal-content h2 {
-  color: #4d7efe;
+.modalContent h2 {
+  color: #000000;
   font-size: 15px;
   margin-bottom: 20px;
 }
@@ -45,7 +45,7 @@ form {
 }
 
 label {
-  color: #4d7efe;
+  color: #000000;
   font-size: 12px;
   font-weight: bolder;
   margin-bottom: 15px;
@@ -56,18 +56,24 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-top: 5px;
   border: 1px solid #4d7efe;
   border-radius: 5px;
   box-sizing: border-box;
-  background-color: #08152b;
+  background-color: #ffffff;
 }
 
-button[type="submit"] {
-  background-color: #08152b;
+input:focus {
+  outline: none; /* Убирает стандартную подсветку */
+  border: 1px solid #4d7efe; /* Оставляет ваш собственный стиль рамки */
+  box-shadow: none; /* Убирает любые дополнительные тени, если есть */
+}
+
+.loginButton {
+  background-color: #4d7efe;
   border: 1px solid #4d7efe;
-  color: #4d7efe;
+  color: #ffffff;
   padding: 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -79,27 +85,27 @@ button[type="submit"] {
   transition: transform 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.loginButton:hover {
   transform: scale(1.05);
 }
 
-.result-content {
-  background-color: #0a1b33;
+.resultContent {
+  background-color: #ffffff;
   padding: 20px;
   max-width: 400px;
   text-align: center;
 }
 
-.result-content h2 {
-  color: #4d7efe;
+.resultContent h2 {
+  color: #000000;
   font-size: 15px;
   margin-bottom: 20px;
 }
 
-.result-content button {
-  background-color: #08152b;
+.resultContent button {
+  background-color: #4d7efe;
   border: 1px solid #4d7efe;
-  color: #4d7efe;
+  color: #ffffff;
   padding: 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -111,16 +117,17 @@ button[type="submit"]:hover {
   transition: transform 0.3s ease;
 }
 
-.result-content button:hover {
+.resultContent button:hover {
   transform: scale(1.05);
 }
 
-.login-error {
+.loginError {
   color: red;
   margin-top: 10px;
   font-size: 14px;
 }
-.password-field {
+
+.passwordField {
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 2px;
 }

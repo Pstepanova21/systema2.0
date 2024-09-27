@@ -3,22 +3,21 @@ import {
   Route,
   Routes,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import About from "./components/about/about";
-import LoginPage from "./components/LoginPage/LoginPage";
 import Puzzle1 from "./components/puzzle/puzzle1";
 import Puzzle2 from "./components/puzzle/puzzle2";
 import Puzzle3 from "./components/puzzle/puzzle3";
 import Puzzle4 from "./components/puzzle/puzzle4";
 import Puzzle5 from "./components/puzzle/puzzle5";
+import LoginModal from "./components/LoginModal/LoginModal"; // Импортируйте ваш модал
 import "./App.css";
 import { useState } from "react";
 
 function AppContent() {
   const location = useLocation();
-  const isAuthPage = location.pathname === "/";
   const isPuzzlePage = [
     "/hdsfjdsfj",
     "/dsfhjsdfh",
@@ -33,38 +32,16 @@ function AppContent() {
 
   return (
     <div className="App">
-      {!isAuthPage && (
-        <Header
-          setToken={setToken}
-          token={token}
-          setTeamId={setTeamId}
-          teamId={teamId}
-          isPuzzlePage={isPuzzlePage} // передаем параметр
-        />
-      )}
+      <Header
+        setToken={setToken}
+        token={token}
+        setTeamId={setTeamId}
+        teamId={teamId}
+        isPuzzlePage={isPuzzlePage}
+        setIsModalOpen={setIsModalOpen} // Передаем функцию для открытия модала
+      />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <LoginPage
-              setToken={setToken}
-              token={token}
-              setTeamId={setTeamId}
-              teamId={teamId}
-            />
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <About
-              setToken={setToken}
-              token={token}
-              setTeamId={setTeamId}
-              teamId={teamId}
-            />
-          }
-        />
+        <Route path="/" element={<Navigate to="/hdsfjdsfj" />} />
         <Route
           path="/hdsfjdsfj"
           element={
@@ -121,7 +98,7 @@ function AppContent() {
           }
         />
       </Routes>
-      {!isPuzzlePage && !isAuthPage && (
+      {!isPuzzlePage && (
         <Footer
           setToken={setToken}
           token={token}
@@ -130,6 +107,9 @@ function AppContent() {
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
         />
+      )}
+      {isModalOpen && (
+        <LoginModal onClose={() => setIsModalOpen(false)} token={token} />
       )}
     </div>
   );

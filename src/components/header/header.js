@@ -1,17 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import User from "../../assets/images/user 1.png";
 
-function Header({ isPuzzlePage }) {
+function Header({ isPuzzlePage, setIsModalOpen }) {
   return (
     <header className={isPuzzlePage ? "puzzle-header" : ""}>
       <nav>
-        <img src={User} alt="User" className="logo" />
         <ul>
-          <li>
-            <Link to="/about">О НАС</Link>
-          </li>
           <li>
             <Link to="/hdsfjdsfj">TASK 1</Link>
           </li>
@@ -26,6 +21,11 @@ function Header({ isPuzzlePage }) {
           </li>
           <li>
             <Link to="/dlskjflksdjfk">TASK 5</Link>
+          </li>
+          <li>
+            <Link to="#" onClick={() => setIsModalOpen(true)}>
+              ВХОД
+            </Link>
           </li>
         </ul>
       </nav>
